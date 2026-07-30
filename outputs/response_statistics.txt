@@ -1,0 +1,6 @@
+Miraclib response analysis: melanoma PBMC samples
+
+Statistical unit: each subject's mean population frequency across available PBMC timepoints.
+Test: two-sided Mann-Whitney U for responders versus non-responders.
+Multiple testing: Benjamini-Hochberg FDR across five populations; significance threshold q < 0.05.
+Significant populations after FDR correction: none.

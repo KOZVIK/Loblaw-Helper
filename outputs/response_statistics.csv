@@ -1,0 +1,6 @@
+population,responder_subjects,non_responder_subjects,responder_median_percentage,non_responder_median_percentage,median_difference,mann_whitney_u,p_value,adjusted_p_value,significant,rank_biserial_correlation
+b_cell,331,325,9.67139,9.84457,-0.173175,51499,0.345796,0.432245,no,-0.0425471
+cd8_t_cell,331,325,24.8969,25.0097,-0.112778,52591,0.622144,0.622144,no,-0.0222449
+cd4_t_cell,331,325,30.2098,29.8225,0.387297,59855,0.0124221,0.0621105,no,0.112805
+nk_cell,331,325,14.7397,14.9598,-0.220141,50081,0.126745,0.316862,no,-0.0689101
+monocyte,331,325,19.7945,20.2768,-0.482287,51079,0.264492,0.432245,no,-0.0503556
