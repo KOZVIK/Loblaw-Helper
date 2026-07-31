@@ -14,10 +14,16 @@ Part 3 requires SciPy and Matplotlib for statistical testing and plotting.
 
 ## Setup
 
-From the repository root:
+In GitHub Codespaces or another environment with GNU Make:
 
 ```bash
 make setup
+```
+
+In Windows PowerShell without GNU Make:
+
+```powershell
+python -m pip install --requirement requirements.txt
 ```
 
 This runs `python -m pip install --requirement requirements.txt`. The
@@ -36,6 +42,15 @@ This executes `load_data.py`, `analyze_frequencies.py`, `analyze_response.py`,
 and `analyze_subsets.py` sequentially. The scripts do not require command-line
 arguments. `load_data.py` reads `cell-count.csv` relative to its own location,
 so it can also be invoked from a different working directory.
+
+In Windows PowerShell without GNU Make, run the same pipeline directly:
+
+```powershell
+python load_data.py
+python analyze_frequencies.py
+python analyze_response.py
+python analyze_subsets.py
+```
 
 ### Part 1: Load the database
 
@@ -204,6 +219,12 @@ Run the complete test suite with:
 make test
 ```
 
+Windows PowerShell equivalent:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
 The suite covers schema integrity, normalized loading, null handling,
 idempotency, input validation, frequency calculations, multiple-testing
 correction, response-group validation, Part 4 filtering, grouped counts, and
@@ -215,6 +236,12 @@ After running `make setup` and `make pipeline`, start the interactive dashboard:
 
 ```bash
 make dashboard
+```
+
+Windows PowerShell equivalent:
+
+```powershell
+python -m streamlit run dashboard.py
 ```
 
 Streamlit prints the local and forwarded URLs in the terminal. In GitHub

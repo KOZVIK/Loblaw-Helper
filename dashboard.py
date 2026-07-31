@@ -258,6 +258,9 @@ with response_tab:
         "Significant",
         "Rank-biserial effect",
     ]
+    display_statistics["Significant"] = display_statistics["Significant"].map(
+        {True: "Yes", False: "No"}
+    )
     st.dataframe(
         display_statistics.style.format(
             {
