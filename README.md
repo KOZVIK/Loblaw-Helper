@@ -115,5 +115,5 @@ The dashboard provides:
 - interactive miraclib response boxplots and statistics;
 - baseline cohort counts and sample data.
 
-Codespaces displays a forwarded dashboard URL for port 8501 after the server
-starts. Open that link when prompted.
+Local URL: http://localhost:8501/
+If you’re running this in GitHub Codespaces, use https://your-codespace-name-8501.app.github.dev/
