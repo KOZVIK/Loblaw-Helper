@@ -17,23 +17,25 @@ Part 3 requires SciPy and Matplotlib for statistical testing and plotting.
 From the repository root:
 
 ```bash
-python -m pip install -r requirements.txt
+make setup
 ```
+
+This runs `python -m pip install --requirement requirements.txt`. The
+`--requirement` option tells pip to read the dependency list from the file; it
+does not refer to the R programming language.
 
 ## Reproducing the analysis
 
-Run the scripts in this order:
+Run the complete pipeline:
 
 ```bash
-python load_data.py
-python analyze_frequencies.py
-python analyze_response.py
-python analyze_subsets.py
+make pipeline
 ```
 
-The scripts do not require command-line arguments. `load_data.py` reads
-`cell-count.csv` relative to its own location, so it can also be invoked from a
-different working directory.
+This executes `load_data.py`, `analyze_frequencies.py`, `analyze_response.py`,
+and `analyze_subsets.py` sequentially. The scripts do not require command-line
+arguments. `load_data.py` reads `cell-count.csv` relative to its own location,
+so it can also be invoked from a different working directory.
 
 ### Part 1: Load the database
 
@@ -184,6 +186,8 @@ redesigning the data model.
 | `analyze_frequencies.py` | Generate the Part 2 sample-frequency table |
 | `analyze_response.py` | Run Part 3 statistical tests and create boxplots |
 | `analyze_subsets.py` | Run the Part 4 baseline subset queries |
+| `dashboard.py` | Serve the interactive Streamlit dashboard |
+| `Makefile` | Install dependencies and orchestrate the complete pipeline |
 | `tests/` | Unit and integration tests using isolated temporary databases |
 | `outputs/` | Reproducible tables, report text, and plots |
 
@@ -197,7 +201,7 @@ artifacts.
 Run the complete test suite with:
 
 ```bash
-python -m unittest discover -s tests -v
+make test
 ```
 
 The suite covers schema integrity, normalized loading, null handling,
@@ -207,5 +211,19 @@ the requested B-cell average.
 
 ## Dashboard
 
-The interactive dashboard has not yet been implemented. A dashboard link and
-launch instructions will be added when that part is complete.
+After running `make setup` and `make pipeline`, start the interactive dashboard:
+
+```bash
+make dashboard
+```
+
+Streamlit prints the local and forwarded URLs in the terminal. In GitHub
+Codespaces, open the forwarded port when prompted. The dashboard includes:
+
+- a trial overview by project and condition;
+- interactive metadata filters and per-sample population frequencies;
+- responder/non-responder boxplots and the complete statistical results;
+- Part 4 baseline cohort metrics, charts, and sample-level data.
+
+Dashboard link: run the command above to create the environment-specific local
+or GitHub Codespaces URL.
